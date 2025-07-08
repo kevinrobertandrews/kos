@@ -6,9 +6,10 @@
     "kos": "dist/index.js"
   },
   "scripts": {
-    "build": "tsc && node scripts/add-shebang.js",
+    "build": "tsup",
     "dev": "npx tsup --watch",
-    "test": "vitest"
+    "test": "vitest",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
