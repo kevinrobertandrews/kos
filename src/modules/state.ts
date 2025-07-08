@@ -1,24 +1,33 @@
-import { FUEL_DECAY, WATER_DECAY } from "../modules/config";
+import time from "../lib/time";
+import config from "../modules/config";
 import { readLogs } from "./log";
 
-export type Stat = {
-  level: number; // from 0 to 1
-  lastUpdated: string; // ISO timestamp
-};
-
 export type LifeState = {
-  water: Stat;
-  fuel: Stat;
+  water: {
+    level: number; // 0.0 - 1.0
+    lastUpdated: string;
+  };
+  fuel: {
+    level: number; // 0.0 - 1.0
+    lastUpdated: string;
+  };
   chores: {
     count: number; // number of chores done in a day
     lastReset: string;
   };
-  // mood, rest, energy can be added later
+  // bank: {};
+  // sleep: {};
+  // fit: {};
+  // mood: {};
+  // music: {};
+  // career: {};
+  // love: {};
+  // read: {};
 };
 
 const DECAY_RATE = {
-  water: WATER_DECAY,
-  fuel: FUEL_DECAY,
+  water: config.WATER_DECAY,
+  fuel: config.FUEL_DECAY,
 };
 
 function decayLevel(level: number, hoursElapsed: number, rate: number): number {
@@ -26,15 +35,29 @@ function decayLevel(level: number, hoursElapsed: number, rate: number): number {
 }
 
 export function reduce(logs?: any[]): LifeState {
+  let state: LifeState = {
+    water: {
+      level: 0,
+      lastUpdated: "",
+    },
+    fuel: {
+      level: 0,
+      lastUpdated: "",
+    },
+    chores: {
+      count: 0,
+      lastReset: "",
+    },
+  };
+
   const entries = readLogs();
 
-  const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  for (const log of entries) {
+    console.log(log);
+    console.log(new Date(log.timestamp).toISOString());
+  }
 
-  let state: LifeState = {
-    water: { level: 0, lastUpdated: "" },
-    fuel: { level: 0, lastUpdated: "" },
-    chores: { count: 0, lastReset: today },
-  };
+  return state;
 
   for (const log of entries) {
     const timestamp = new Date(log.timestamp).toISOString();
@@ -56,7 +79,6 @@ export function reduce(logs?: any[]): LifeState {
 
     // count chores
     if (log.command === "chore") {
-      console.log("uo");
       const logDate = log.timestamp.slice(0, 10);
       if (logDate !== state.chores.lastReset) {
         state.chores.count = 0; // reset count

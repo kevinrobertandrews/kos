@@ -3,12 +3,12 @@
 import fs from "fs";
 import path from "path";
 import { Command } from "./commands";
-import { makeDirectory } from "../lib/helpers";
+import disk from "../lib/disk";
 
 const dataDir = path.resolve(__dirname, "../data");
 const logPath = path.join(dataDir, "log.jsonl");
 
-makeDirectory(dataDir);
+disk.makeDirectory(dataDir);
 
 export function log(command: string, args: string[]) {
   if (command == Command.Status.name || command == undefined) {

@@ -11,7 +11,8 @@
     "skipLibCheck": true, // don't type-check `.d.ts` files inside `node_modules`
     "resolveJsonModule": true, // lets us import .json directly
     "moduleResolution": "node",
-    "declaration": true // emits type declaration files
+    "declaration": true, // emits type declaration files
+    "sourceMap": true, // emit sourcemaps for debugging
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
