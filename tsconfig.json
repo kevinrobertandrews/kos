@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // gives modern syntax
+    "module": "CommonJS", // required for node style imports
+    "lib": ["ES2020"], // ensures modern standard library support
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true, // enables all type safety checks
+    "esModuleInterop": true, // allows ESM style imports to work like `import fs from "fs"`
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true, // don't type-check `.d.ts` files inside `node_modules`
+    "resolveJsonModule": true, // lets us import .json directly
+    "moduleResolution": "node",
+    "declaration": true // emits type declaration files
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
