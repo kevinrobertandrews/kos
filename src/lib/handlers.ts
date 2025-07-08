@@ -30,6 +30,11 @@ function doChore(state: LifeState, args: string[]) {
   console.log(`🧹 Logged: ${choreName}`);
 }
 
+function commandNameNotFound() {
+  console.log("command name not found");
+  process.exit(1);
+}
+
 export const handlers: Record<
   string,
   (state: LifeState, args: string[]) => void
@@ -38,5 +43,5 @@ export const handlers: Record<
   [Command.Water.name]: drinkWater,
   [Command.Fuel.name]: eatMeal, // optional if not implemented yet
   [Command.Chore.name]: doChore,
-  default: showStatus,
+  default: commandNameNotFound,
 };

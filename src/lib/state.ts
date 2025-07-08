@@ -25,8 +25,8 @@ function decayLevel(level: number, hoursElapsed: number, rate: number): number {
   return Math.max(0, level - hoursElapsed * rate);
 }
 
-export function reduce(): LifeState {
-  const logs = readLogs();
+export function reduce(logs?: any[]): LifeState {
+  const entries = readLogs();
 
   const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 
@@ -36,7 +36,7 @@ export function reduce(): LifeState {
     chores: { count: 0, lastReset: today },
   };
 
-  for (const log of logs) {
+  for (const log of entries) {
     const timestamp = new Date(log.timestamp).toISOString();
     const now = new Date(log.timestamp).getTime();
 
@@ -54,7 +54,9 @@ export function reduce(): LifeState {
       state[statKey].lastUpdated = timestamp;
     }
 
+    // count chores
     if (log.command === "chore") {
+      console.log("uo");
       const logDate = log.timestamp.slice(0, 10);
       if (logDate !== state.chores.lastReset) {
         state.chores.count = 0; // reset count
