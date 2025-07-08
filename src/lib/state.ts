@@ -13,7 +13,7 @@ export type LifeState = {
 
 const DECAY_RATE = {
   water: 7, // per hour
-  fuel: 0.05,
+  fuel: 3,
 };
 
 function decayLevel(level: number, hoursElapsed: number, rate: number): number {

@@ -4,8 +4,8 @@ import { LifeState } from "./state";
 export type CommandHandler = (state: LifeState, args: string[]) => void;
 
 function showStatus(state: LifeState): void {
-  console.log(`💧 Water  : ${state.water.level.toFixed(2)}`);
-  console.log(`🍽️  Hunger : ${state.fuel.level.toFixed(2)}\n`);
+  console.log(`💧 water : ${state.water.level.toFixed(2)}`);
+  console.log(`🍖 fuel  : ${state.fuel.level.toFixed(2)}\n`);
 }
 
 function drinkWater() {
