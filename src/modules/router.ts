@@ -1,4 +1,5 @@
-import { getHandler, resolveCommand } from "./handlers/handlers";
+import { getHandler } from "./handlers/handlers";
+import { resolveCommand } from "./handlers/aliases";
 import { log } from "./log";
 import { reduce } from "./state";
 

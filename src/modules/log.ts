@@ -61,3 +61,7 @@ export function readLogs(): Array<Log> {
   // wut
   return lines.map((line) => JSON.parse(line));
 }
+
+export default {
+  readLogs,
+};

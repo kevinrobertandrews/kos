@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import terminal from "./lib/terminal";
-import router from "./modules/router";
+import { terminal } from "@lib";
+import { router } from "@modules";
 
 const { command, args } = terminal.getCommandLineArguments();
 
