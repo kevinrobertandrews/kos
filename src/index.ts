@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-import { getCommand } from "./modules/commands";
-import { router } from "./modules/router";
+import terminal from "./lib/terminal";
+import router from "./modules/router";
 
-const { command, args } = getCommand();
+const { command, args } = terminal.getCommandLineArguments();
 
 function main() {
-  router(command, args);
+  router.route(command, args);
 }
 
 main();
