@@ -10,15 +10,19 @@ function showStatus(state: LifeState): void {
   console.log(`🧹 chores : ${state.chores.count} today\n`);
 }
 
-function drinkWater() {
+export function drink_water(state: LifeState) {
   console.log("watering...");
+  return {
+    ...state,
+    water: { ...state.water, level: 1.0 },
+  };
 }
 
-function eatMeal() {
+export function eatMeal() {
   console.log("eating...");
 }
 
-function doChore(state: LifeState, args: string[]) {
+export function doChore(state: LifeState, args: string[]) {
   if (args.length === 0) {
     console.error(
       '❌ Chore requires a description.\nUsage: kos chore "wash dishes"'
@@ -30,7 +34,7 @@ function doChore(state: LifeState, args: string[]) {
   console.log(`🧹 Logged: ${choreName}`);
 }
 
-function commandNameNotFound() {
+export function commandNameNotFound() {
   console.log("command name not found");
   process.exit(1);
 }
@@ -40,7 +44,7 @@ export const handlers: Record<
   (state: LifeState, args: string[]) => void
 > = {
   [Command.Status.name]: showStatus,
-  [Command.Water.name]: drinkWater,
+  [Command.Water.name]: drink_water,
   [Command.Fuel.name]: eatMeal, // optional if not implemented yet
   [Command.Chore.name]: doChore,
   default: commandNameNotFound,
