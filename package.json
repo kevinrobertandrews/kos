@@ -2,9 +2,11 @@
   "name": "kos",
   "version": "1.0.0",
   "description": "> _\"A mirror made of state and will.\"_",
-  "main": "index.js",
+  "bin": {
+    "kos": "dist/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && node scripts/add-shebang.js"
   },
   "keywords": [],
   "author": "",
