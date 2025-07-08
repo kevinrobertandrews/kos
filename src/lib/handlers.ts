@@ -18,7 +18,7 @@ export function drink_water(state: LifeState) {
   };
 }
 
-export function eatMeal() {
+export function eat_meal() {
   console.log("eating...");
 }
 
@@ -45,7 +45,7 @@ export const handlers: Record<
 > = {
   [Command.Status.name]: showStatus,
   [Command.Water.name]: drink_water,
-  [Command.Fuel.name]: eatMeal, // optional if not implemented yet
+  [Command.Fuel.name]: eat_meal, // optional if not implemented yet
   [Command.Chore.name]: doChore,
   default: commandNameNotFound,
 };
