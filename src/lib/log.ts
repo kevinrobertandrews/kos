@@ -4,7 +4,12 @@ import fs from "fs";
 import path from "path";
 import { Command } from "./commands";
 
-const logPath = path.resolve(__dirname, "../data/log.jsonl");
+const dataDir = path.resolve(__dirname, "../data");
+const logPath = path.join(dataDir, "log.jsonl");
+
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
 
 export function writeLog(command: string, args: string[]) {
   if (command == Command.Status.name) {

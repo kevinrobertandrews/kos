@@ -1,20 +1,18 @@
 // Router takes in commands and finds a handler to execute
 
 import { Command } from "./commands";
-import { readLogs, writeLog } from "./log";
+import { writeLog } from "./log";
+import { reconstructState } from "./state";
 
 export function routeCommand(command: string, args: string[]) {
   writeLog(command, args);
 
   switch (command) {
     case Command.Status.name:
-      const logs = readLogs();
-      console.log("📚 Recent logs:");
-      logs.slice(-5).forEach((entry) => {
-        console.log(
-          `${entry.timestamp} — ${entry.command} ${entry.args.join(" ")}`
-        );
-      });
+      const state = reconstructState();
+      console.log("\n🌡️  Current State:");
+      console.log(`💧 Water  : ${state.water.level.toFixed(2)}`);
+      console.log(`🍽️  Hunger : ${state.fuel.level.toFixed(2)}\n`);
       return;
     case Command.Water.name:
       return console.log("💧 water...");
