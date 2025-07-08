@@ -34,3 +34,15 @@ kos fuel
 # View current state
 kos status
 ```
+
+```
+data/
+  state.json       # current decayed state
+  logbook.json     # raw entries
+src/
+  index.ts         # CLI router
+  state.ts         # decay logic
+  actions.ts       # stat modifiers
+  logger.ts        # persistent logs
+  types.ts         # data interfaces
+```
