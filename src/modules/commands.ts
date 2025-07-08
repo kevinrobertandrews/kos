@@ -1,10 +1,14 @@
-// Commands is where the system defines what commands are possible
+/**
+ * Parse command and arguments from the terminal
+ */
+export function getCommand() {
+  const [command, ...args] = process.argv.slice(2);
+  return { command, args };
+}
 
-type Command = {
-  name: string;
-  description: string;
-};
-
+/**
+ * Command registry that defines program's commands
+ */
 export const Commands: Record<string, Command> = {
   Water: { name: "water", description: "log hydration" },
   Fuel: { name: "fuel", description: "log meals" },
@@ -12,35 +16,20 @@ export const Commands: Record<string, Command> = {
   Chore: { name: "chore", description: "add a chore done" },
 } as const;
 
+/**
+ * Base command type
+ */
+type Command = {
+  name: string;
+  description: string;
+};
+
+/**
+ * Easily get the possible commands as a type
+ */
 export type CommandKey = keyof typeof Commands;
+
+/**
+ * Easily retrieve the types possible command values
+ */
 export type CommandValue = (typeof Commands)[CommandKey];
-
-export function getCommand() {
-  const [command, ...args] = process.argv.slice(2);
-  return { command, args };
-}
-
-/* 
-
-Potential structure to consider
-
-returns something like { command: "water", { drank: true, cup: true }}
-
-export function parseArgs() {
-  const raw = process.argv.slice(2);
-  const [command, ...rest] = raw;
-
-  const flags: Record<string, string | boolean> = {};
-  rest.forEach((arg) => {
-    if (arg.includes("=")) {
-      const [key, value] = arg.split("=");
-      flags[key] = value;
-    } else {
-      flags[arg] = true;
-    }
-  });
-
-  return { command, flags };
-}
-
-*/
