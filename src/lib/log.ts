@@ -1,4 +1,5 @@
-// src/log.ts
+// Log handles saving data to disk
+
 import fs from "fs";
 import path from "path";
 import { Command } from "./commands";

@@ -1,4 +1,5 @@
-// commands.ts
+// Commands is where the system defines what commands are possible
+
 export const Command = {
   Water: { name: "water", description: "log hydration" },
   Fuel: { name: "fuel", description: "log meals" },

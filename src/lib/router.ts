@@ -1,3 +1,5 @@
+// Router takes in commands and finds a handler to execute
+
 import { Command } from "./commands";
 import { readLogs, writeLog } from "./log";
 
