@@ -1,4 +1,4 @@
-import { Command } from "./commands";
+import { Commands } from "./commands";
 import { LifeState } from "./state";
 
 export type CommandHandler = (state: LifeState, args: string[]) => void;
@@ -46,10 +46,10 @@ export const handlers: Record<
   string,
   (state: LifeState, args: string[]) => void
 > = {
-  [Command.Status.name]: show_status,
-  [Command.Water.name]: drink_water,
-  [Command.Fuel.name]: eat_meal, // optional if not implemented yet
-  [Command.Chore.name]: log_chore,
+  [Commands.Status.name]: show_status,
+  [Commands.Water.name]: drink_water,
+  [Commands.Fuel.name]: eat_meal, // optional if not implemented yet
+  [Commands.Chore.name]: log_chore,
   default: command_not_found,
 };
 
