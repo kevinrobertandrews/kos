@@ -11,7 +11,7 @@ const logPath = path.join(dataDir, "log.jsonl");
 makeDirectory(dataDir);
 
 export function log(command: string, args: string[]) {
-  if (command == Command.Status.name) {
+  if (command == Command.Status.name || command == undefined) {
     return; // don't log passive introspection
   }
 
