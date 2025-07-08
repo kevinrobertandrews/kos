@@ -1,3 +1,4 @@
+import { FUEL_DECAY, WATER_DECAY } from "../config";
 import { readLogs } from "./log";
 
 export type Stat = {
@@ -12,8 +13,8 @@ export type LifeState = {
 };
 
 const DECAY_RATE = {
-  water: 7, // per hour
-  fuel: 3,
+  water: WATER_DECAY,
+  fuel: FUEL_DECAY,
 };
 
 function decayLevel(level: number, hoursElapsed: number, rate: number): number {
