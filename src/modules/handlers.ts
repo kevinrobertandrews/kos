@@ -5,7 +5,12 @@ export type CommandHandler = (state: LifeState, args: string[]) => void;
 
 export function show_status(state: LifeState): void {
   console.log("");
-  console.log(`water  : ${state.water.level.toFixed(2)}`);
+  console.log("          val    time");
+  console.log(
+    `water  : ${state.water.level.toFixed(2)} · ${state.water.since.toFixed(
+      2
+    )}h`
+  );
   console.log(`fuel   : ${state.fuel.level.toFixed(2)}`);
   console.log(`chores : ${state.chores.count} today\n`);
 }
@@ -20,7 +25,7 @@ export function drink_water(state: LifeState): LifeState {
 export function eat_meal(state: LifeState): LifeState {
   return {
     ...state,
-    water: { ...state.fuel, level: 1.0 },
+    fuel: { ...state.fuel, level: 1.0 },
   };
 }
 
