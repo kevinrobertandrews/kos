@@ -4,6 +4,7 @@ export const Command = {
   Water: { name: "water", description: "log hydration" },
   Fuel: { name: "fuel", description: "log meals" },
   Status: { name: "status", description: "view current status" },
+  Chore: { name: "chore", description: "add a chore done" },
 } as const;
 
 export type CommandKey = keyof typeof Command;

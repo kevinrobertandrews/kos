@@ -9,6 +9,10 @@ export type Stat = {
 export type LifeState = {
   water: Stat;
   fuel: Stat;
+  chores: {
+    count: number; // number of chores done in a day
+    lastReset: string;
+  };
   // mood, rest, energy can be added later
 };
 
@@ -23,9 +27,13 @@ function decayLevel(level: number, hoursElapsed: number, rate: number): number {
 
 export function reduce(): LifeState {
   const logs = readLogs();
+
+  const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+
   let state: LifeState = {
     water: { level: 0, lastUpdated: "" },
     fuel: { level: 0, lastUpdated: "" },
+    chores: { count: 0, lastReset: today },
   };
 
   for (const log of logs) {
@@ -44,6 +52,16 @@ export function reduce(): LifeState {
         DECAY_RATE[statKey]
       );
       state[statKey].lastUpdated = timestamp;
+    }
+
+    if (log.command === "chore") {
+      const logDate = log.timestamp.slice(0, 10);
+      if (logDate !== state.chores.lastReset) {
+        state.chores.count = 0; // reset count
+        state.chores.lastReset = logDate;
+      }
+
+      state.chores.count += 1;
     }
 
     // Apply effects
