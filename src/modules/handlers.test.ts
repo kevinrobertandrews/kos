@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { drink_water } from "../../src/modules/handlers";
-import { reduce } from "../../src/modules/state";
+import { drink_water } from "./handlers";
+import { reduce } from "./state";
 
 describe("drink_water", () => {
   it("should set the water value to 1", () => {
