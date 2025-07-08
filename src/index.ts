@@ -2,7 +2,6 @@
 
 import { getCommand } from "./lib/index";
 import { routeCommand } from "./router";
-import { Command } from "./types/models";
 
 const { command, args } = getCommand();
 
