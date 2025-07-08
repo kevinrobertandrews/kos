@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 
-import { getCommand, parseArgs } from "./lib/index";
+import { getCommand } from "./lib/index";
+import { Command } from "./types/models";
 
 const { command, args } = getCommand();
 
-if (command == "water") {
+if (command == Command.Water) {
   console.log("water");
 }
 
-if (command == "fuel") {
+if (command == Command.Fuel) {
   console.log("fuel");
 }
 
-if (command == "status") {
+if (command == Command.Status) {
   console.log("status");
 }
 
