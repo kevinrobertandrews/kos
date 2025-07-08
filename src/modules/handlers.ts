@@ -5,14 +5,17 @@ export type CommandHandler = (state: LifeState, args: string[]) => void;
 
 export function show_status(state: LifeState): void {
   console.log("");
-  console.log("          val    time");
   console.log(
-    `water  : ${state.water.level.toFixed(2)} · ${state.water.since.toFixed(
-      2
-    )}h`
+    `water   ${state.water.level.toFixed(2)} · ${state.water.since.toFixed(2)}h`
   );
-  console.log(`fuel   : ${state.fuel.level.toFixed(2)}`);
-  console.log(`chores : ${state.chores.count} today\n`);
+  console.log(
+    `fuel    ${state.fuel.level.toFixed(2)} · ${state.fuel.since.toFixed(2)}h`
+  );
+  console.log("");
+  console.log(`chores  ${state.chores.count} today`);
+
+  console.log("");
+  console.log("placeholder status text...");
 }
 
 export function drink_water(state: LifeState): LifeState {
@@ -39,7 +42,7 @@ export function log_chore(state: LifeState, args: string[]): LifeState {
 
   return {
     ...state,
-    chores: { count: 4, lastReset: "" },
+    chores: { count: state.chores.count + 1 },
   };
 }
 

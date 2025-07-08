@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 import { Commands } from "./commands";
 import disk from "../lib/disk";
+import { handlers } from "./handlers";
 
 const dataDir = path.resolve(__dirname, "../data");
 const logPath = path.join(dataDir, "log.jsonl");
@@ -11,6 +12,10 @@ const logPath = path.join(dataDir, "log.jsonl");
 disk.makeDirectory(dataDir);
 
 export function log(command: string, args: string[]) {
+  if (handlers[command] == undefined) {
+    return;
+  }
+
   if (command == Commands.Status.name || command == undefined) {
     return; // don't log passive introspection
   }
