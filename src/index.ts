@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { getCommand } from "./lib/index";
+import { getCommand } from "./commands";
 import { routeCommand } from "./router";
 
 const { command, args } = getCommand();
