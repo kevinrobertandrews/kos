@@ -5,37 +5,41 @@ import path from "path";
 import { Commands } from "./commands";
 import disk from "../lib/disk";
 import { handlers } from "./handlers";
+import time from "../lib/time";
+import json from "../lib/json";
 
-const dataDir = path.resolve(__dirname, "../data");
+const dataDir = "../data";
 const logPath = path.join(dataDir, "log.jsonl");
 
-disk.makeDirectory(dataDir);
+disk.mkdir(dataDir);
 
 export function log(command: string, args: string[]) {
   if (handlers[command] == undefined) {
-    return;
+    return; // command not found, no op
   }
 
   if (command == Commands.Status.name || command == undefined) {
-    return; // don't log passive introspection
+    return; // not adding state, don't add to log
   }
 
   const entry = {
-    timestamp: new Date().toISOString(),
+    timestamp: time.timestamp(),
     command,
     args,
   };
 
-  const line = JSON.stringify(entry) + "\n";
-  fs.appendFileSync(logPath, line, "utf-8");
+  const line = json.format(entry);
+  disk.save(logPath, line);
 }
 
-export function readLogs(): Array<{
+type Log = {
   timestamp: string;
   command: string;
   args: string[];
-}> {
-  if (!fs.existsSync(logPath)) return [];
+};
+
+export function readLogs(): Array<Log> {
+  if (!disk.exists(logPath)) return []; // fail if no path
 
   const lines = fs.readFileSync(logPath, "utf-8").split("\n").filter(Boolean);
   return lines.map((line) => JSON.parse(line));

@@ -7,4 +7,5 @@ export default {
     const hours = diff / 1000 / 60 / 60;
     return hours;
   },
+  timestamp: () => new Date().toISOString(),
 };
