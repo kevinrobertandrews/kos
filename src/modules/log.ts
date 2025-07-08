@@ -3,44 +3,61 @@
 import fs from "fs";
 import path from "path";
 import { Commands } from "./commands";
-import disk from "../lib/disk";
-import { handlers } from "./handlers";
-import time from "../lib/time";
-import json from "../lib/json";
+import { handlers } from "./handlers/handlers";
+import { time, json, disk } from "@lib";
 
 const dataDir = "../data";
 const logPath = path.join(dataDir, "log.jsonl");
 
 disk.mkdir(dataDir);
 
-export function log(command: string, args: string[]) {
+/**
+ * Log command and arguments to disk
+ */
+export function log(command: string, args: string[]): void {
+  // guard command not found
   if (handlers[command] == undefined) {
-    return; // command not found, no op
+    return;
   }
 
+  // guard adding log to command that doesn't add state
   if (command == Commands.Status.name || command == undefined) {
-    return; // not adding state, don't add to log
+    return;
   }
 
+  // construct entry log
   const entry = {
     timestamp: time.timestamp(),
     command,
     args,
   };
 
+  // format entry line
   const line = json.format(entry);
+
+  // save log to disk
   disk.save(logPath, line);
 }
 
+/**
+ * Base Log type
+ */
 type Log = {
   timestamp: string;
   command: string;
   args: string[];
 };
 
+/**
+ * Read logs from disk
+ */
 export function readLogs(): Array<Log> {
-  if (!disk.exists(logPath)) return []; // fail if no path
+  // fail if no path
+  if (!disk.exists(logPath)) return [];
 
+  // wut
   const lines = fs.readFileSync(logPath, "utf-8").split("\n").filter(Boolean);
+
+  // wut
   return lines.map((line) => JSON.parse(line));
 }

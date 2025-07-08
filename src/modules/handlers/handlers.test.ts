@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { water, fuel, chore } from "./handlers";
-import { reduce } from "./state";
+import { water, fuel, chore } from "./functions";
+import { reduce } from "../state";
 
 describe("water", () => {
   it("should set the water value to 1", () => {

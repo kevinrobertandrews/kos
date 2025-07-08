@@ -1,18 +1,4 @@
-import { Commands } from "./commands";
-import { LifeState } from "./state";
-
-const aliases: Record<string, string> = {
-  eat: Commands.Fuel.name,
-  food: Commands.Fuel.name,
-  drink: Commands.Water.name,
-  hydrate: Commands.Water.name,
-} satisfies Record<string, string>;
-
-export function resolveCommand(input: string): string {
-  return aliases[input] ?? input;
-}
-
-export type CommandHandler = (state: LifeState, args: string[]) => void;
+import { LifeState } from "../state";
 
 export function show_status(state: LifeState): void {
   console.log("");
@@ -63,30 +49,10 @@ export function command_not_found() {
   console.log("command not found");
 }
 
-export const handlers: Record<
-  string,
-  (state: LifeState, args: string[]) => void
-> = {
-  [Commands.Status.name]: show_status,
-  [Commands.Water.name]: water,
-  ["drink"]: water,
-  ["hydrate"]: water,
-  [Commands.Fuel.name]: fuel,
-  ["eat"]: fuel,
-  ["meal"]: fuel,
-  [Commands.Chore.name]: chore,
-  default: command_not_found,
+export default {
+  show_status,
+  chore,
+  water,
+  fuel,
+  command_not_found,
 };
-
-export function getHandler(command: string) {
-  if (handlers[command]) {
-    return handlers[command];
-  } else if (command == undefined) {
-    return handlers["status"];
-  } else {
-    return () => {
-      // console.log("could not find command", command);
-      // no op??
-    };
-  }
-}

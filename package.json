@@ -7,6 +7,7 @@
   },
   "scripts": {
     "build": "tsc && node scripts/add-shebang.js",
+    "dev": "ts-node -r tsconfig-paths/register src/index.ts",
     "dev:run": "ts-node src/index.ts",
     "dev:watch": "nodemon --exec ts-node src/index.ts",
     "test": "vitest"
@@ -18,8 +19,10 @@
     "@types/node": "^24.0.10",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   }
 }

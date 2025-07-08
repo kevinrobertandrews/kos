@@ -12,7 +12,12 @@
     "resolveJsonModule": true, // lets us import .json directly
     "moduleResolution": "node",
     "declaration": true, // emits type declaration files
-    "sourceMap": true, // emit sourcemaps for debugging
+    "sourceMap": true, // emit sourcemaps for debugging,
+    "baseUrl": ".", // relative to the tsconfig file, needed for path aliasing
+    "paths": {
+      "@lib": ["src/lib/index.ts"],
+      "@lib/*": ["src/lib/*"] // we have both aliases to make @lib work vs @lib/index
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
