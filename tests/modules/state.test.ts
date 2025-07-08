@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { reduce } from "../src/lib/state";
+import { reduce } from "../../src/modules/state";
 
 describe("reduce", () => {
   it("returns a default state when logs are empty", () => {
