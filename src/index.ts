@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { getCommand } from "./lib/commands";
-import { router } from "./lib/router";
+import { getCommand } from "./modules/commands";
+import { router } from "./modules/router";
 
 const { command, args } = getCommand();
 

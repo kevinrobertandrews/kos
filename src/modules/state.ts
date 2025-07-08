@@ -1,4 +1,4 @@
-import { FUEL_DECAY, WATER_DECAY } from "../config";
+import { FUEL_DECAY, WATER_DECAY } from "../modules/config";
 import { readLogs } from "./log";
 
 export type Stat = {

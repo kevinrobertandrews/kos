@@ -3,7 +3,7 @@
 import fs from "fs";
 import path from "path";
 import { Command } from "./commands";
-import { makeDirectory } from "./helpers";
+import { makeDirectory } from "../lib/helpers";
 
 const dataDir = path.resolve(__dirname, "../data");
 const logPath = path.join(dataDir, "log.jsonl");
