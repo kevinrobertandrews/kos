@@ -20,7 +20,7 @@ function decayLevel(level: number, hoursElapsed: number, rate: number): number {
   return Math.max(0, level - hoursElapsed * rate);
 }
 
-export function reconstructState(): LifeState {
+export function reduce(): LifeState {
   const logs = readLogs();
   let state: LifeState = {
     water: { level: 0, lastUpdated: "" },

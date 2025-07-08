@@ -11,7 +11,7 @@ if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
 
-export function writeLog(command: string, args: string[]) {
+export function log(command: string, args: string[]) {
   if (command == Command.Status.name) {
     return; // don't log passive introspection
   }
