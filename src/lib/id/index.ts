@@ -1,7 +1,7 @@
-/*
+import { shortId } from "./shortId";
 
-- shortId
-- uuid
-- hash
+export { shortId };
 
-*/
+export default {
+  shortId,
+};

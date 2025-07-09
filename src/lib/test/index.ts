@@ -1,7 +1,1 @@
-/*
-
-- mockFs()
-- fakeTimer()
-- spy()
-
-*/
+export { runTest } from "./runTest";

@@ -1,6 +1,6 @@
-/**
- * Convert CAD to USD.
- */
-export function cadToUsd(value: number) {
-  throw Error("not implemented");
-}
+import { formatCurrency } from "./formatCurrency/formatCurrency";
+export { formatCurrency };
+
+export default {
+  formatCurrency,
+};

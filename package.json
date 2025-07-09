@@ -14,7 +14,7 @@
     "db": "ts-node _tools/kos/src/db/sqlite.ts",
     "ts-node": "ts-node --require tsconfig-paths/register",
     "log-filter": "node --loader ts-node/esm src/cool-modules/log-filter.ts",
-    "scrap": "npx tsx src/scratch/testing.ts"
+    "lab": "npx tsx src/lab/test.ts"
   },
   "keywords": [],
   "author": "",

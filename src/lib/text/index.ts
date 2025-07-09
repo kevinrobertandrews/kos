@@ -1,7 +1,1 @@
-/*
-
-- slugify
-- truncate
-- titleCase
-
-*/
+export { toTitleCase } from "./toTitleCase";

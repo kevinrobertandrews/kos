@@ -1,8 +1,1 @@
-/*
-
-- clamp
-- lerp
-- roundTo
-- randomBetween
-
-*/
+export { clamp } from "./clamp";
