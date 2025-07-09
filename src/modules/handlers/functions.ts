@@ -12,12 +12,11 @@ export function show_status(state: LifeState): void {
     `fuel    ${state.fuel.level.toFixed(2)} · ${state.fuel.since.toFixed(2)}h`
   );
   console.log("");
-  console.log(
-    `chores  ${state.chores.count} next in ${time.formatDistance(new Date())}`
-  );
+  console.log(`chores  ${state.chores.count}`);
 
   console.log("");
-  console.log("placeholder status text...");
+  console.log(time.between(time.now(), time.bedtime()), "until bedtime");
+  // console.log("placeholder status text...");
 }
 
 export function water(state: LifeState): LifeState {
