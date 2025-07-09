@@ -1,7 +1,7 @@
 /**
  * Stringify and add a new line
  */
-function format(entry: any) {
+export function format(entry: any) {
   return JSON.stringify(entry) + "\n";
 }
 
