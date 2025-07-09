@@ -1,6 +1,9 @@
+import { time } from "@lib";
 import { LifeState } from "../state";
 
 export function show_status(state: LifeState): void {
+  console.clear();
+  console.log(time.longDate(), "·", time.hhmm());
   console.log("");
   console.log(
     `water   ${state.water.level.toFixed(2)} · ${state.water.since.toFixed(2)}h`
@@ -9,7 +12,9 @@ export function show_status(state: LifeState): void {
     `fuel    ${state.fuel.level.toFixed(2)} · ${state.fuel.since.toFixed(2)}h`
   );
   console.log("");
-  console.log(`chores  ${state.chores.count} today`);
+  console.log(
+    `chores  ${state.chores.count} next in ${time.formatDistance(new Date())}`
+  );
 
   console.log("");
   console.log("placeholder status text...");

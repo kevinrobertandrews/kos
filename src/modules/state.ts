@@ -59,7 +59,9 @@ export function reduce(logs?: any[]): LifeState {
 
     // reduce chores
     if (log.command == Commands.Chore.name) {
-      state.chores.count = state.chores.count + 1;
+      if (time.isToday(log.timestamp)) {
+        state.chores.count = state.chores.count + 1;
+      }
     }
   }
 
