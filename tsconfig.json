@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "target": "ES2020", // gives modern syntax
-    "module": "CommonJS", // required for node style imports
-    "lib": ["ES2020"], // ensures modern standard library support
+    "module": "ESNext", // required for node style imports
+    "lib": [
+      "ES2020"
+    ], // ensures modern standard library support
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true, // enables all type safety checks
@@ -10,17 +12,33 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true, // don't type-check `.d.ts` files inside `node_modules`
     "resolveJsonModule": true, // lets us import .json directly
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "declaration": true, // emits type declaration files
     "sourceMap": true, // emit sourcemaps for debugging,
     "baseUrl": ".", // relative to the tsconfig file, needed for path aliasing
     "paths": {
-      "@lib": ["src/lib/index.ts"],
-      "@lib/*": ["src/lib/*"], // we have both aliases to make @lib work vs @lib/index
-      "@modules": ["src/modules/index.ts"],
-      "@modules/*": ["src/modules/*"] // we have both aliases to make @lib work vs @lib/index
-    }
+      "@lib": [
+        "src/lib/index.ts"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ], // we have both aliases to make @lib work vs @lib/index
+      "@modules": [
+        "src/modules/index.ts"
+      ],
+      "@modules/*": [
+        "src/modules/*"
+      ] // we have both aliases to make @lib work vs @lib/index
+    },
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "ts-node": {
+    "esm": true
+  }
 }
