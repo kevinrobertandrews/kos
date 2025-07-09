@@ -1,0 +1,8 @@
+/*
+
+- clamp
+- lerp
+- roundTo
+- randomBetween
+
+*/

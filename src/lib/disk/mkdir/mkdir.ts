@@ -17,6 +17,10 @@ export function mkdir(folder: string, scope: FolderScope = "root"): string {
     root: ROOT,
   }[scope];
 
+  if (!base) {
+    throw new Error(`Invalid folder scope: ${scope}`);
+  }
+
   const directory = path.join(base, folder);
 
   try {

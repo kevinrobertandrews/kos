@@ -8,3 +8,11 @@ function format(entry: any) {
 export default {
   format,
 };
+
+/*
+
+- tryParse
+- safeStringify
+- clone
+
+*/

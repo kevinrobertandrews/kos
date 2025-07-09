@@ -1,0 +1,7 @@
+/*
+
+- slugify
+- truncate
+- titleCase
+
+*/

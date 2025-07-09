@@ -1,0 +1,7 @@
+/*
+
+- shortId
+- uuid
+- hash
+
+*/
