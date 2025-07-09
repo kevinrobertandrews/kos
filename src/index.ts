@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+console.clear();
+
 import { terminal } from "@lib";
 import { router } from "@modules";
 
