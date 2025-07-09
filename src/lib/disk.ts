@@ -16,8 +16,6 @@ function save(path: string, data: string): void {
   fs.appendFileSync(path, data, "utf-8");
 }
 
-function load() {}
-
 function exists(path: string): boolean {
   return fs.existsSync(path);
 }
