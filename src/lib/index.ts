@@ -1,131 +1,45 @@
-import { stack, queue, createState, withHistory } from "./state";
-import { shortId } from "./id";
-import { getESModuleDir } from "./esm";
-import { extractKeywords } from "./ai";
-import { isShallowEqual, clone } from "./object";
-import { isWithinBoundingBox } from "./location";
-import { runTest } from "./test";
-import { clamp } from "date-fns";
-import { toTitleCase } from "./text";
-import { haversineDistance } from "./geo";
-import { bytesToHumanReadable } from "./convert";
-import { formatCurrency } from "./currency";
-import { cadToUsd } from "./currency/cadToUsd/cadToUsd";
-import { publish, subscribe } from "./pubsub";
-import { deck } from "./deck";
-import { del, options, ping, post, put } from "./http";
-import { get } from "http";
-import { pick } from "./random";
-import { hsl } from "./colour";
-import { format } from "./json";
-import { log } from "./logger";
-import { exists, mkdir, read, save } from "./disk";
-import {
-  ampm,
-  bedtime,
-  hhmm,
-  hhmmTz,
-  longDate,
-  longDateWithOrdinal,
-  midnight,
-  since,
-  timestamp,
-  YYYYMMDD,
-  now,
-  between,
-  isToday,
-  isTodayUTC,
-} from "./time";
+import ai from "./ai";
+import colour from "./colour";
+import convert from "./convert";
+import currency from "./currency";
+import deck from "./deck";
+import disk from "./disk";
+import esm from "./esm";
+import geo from "./geo";
+import http from "./http";
+import id from "./id";
+import json from "./json";
+import location from "./location";
+import logger from "./logger";
+import math from "./math";
+import object from "./object";
+import pubsub from "./pubsub";
+import random from "./random";
+import state from "./state";
+import testing from "./testing";
+import text from "./text";
+import time from "./time";
 
 export default {
-  state: {
-    stack,
-    queue,
-    createState,
-    withHistory,
-  },
-  id: {
-    shortId,
-  },
-  esm: {
-    getESModuleDir,
-  },
-  ai: {
-    extractKeywords,
-  },
-  object: {
-    clone,
-    isShallowEqual,
-  },
-  location: {
-    isWithinBoundingBox,
-  },
-  test: {
-    runTest,
-  },
-  math: {
-    clamp,
-  },
-  text: {
-    toTitleCase,
-  },
-  geo: {
-    haversineDistance,
-  },
-  convert: {
-    bytesToHumanReadable,
-  },
-  currency: {
-    cadToUsd,
-    formatCurrency,
-  },
-  pubsub: {
-    subscribe,
-    publish,
-  },
-  deck: {
-    deck,
-  },
-  http: {
-    get,
-    post,
-    put,
-    del,
-    options,
-    ping,
-  },
-  random: {
-    pick,
-  },
-  colour: {
-    hsl,
-  },
-  json: {
-    format,
-  },
-  logger: {
-    log,
-  },
-  disk: {
-    read,
-    save,
-    exists,
-    mkdir,
-  },
-  time: {
-    YYYYMMDD,
-    hhmm,
-    since,
-    timestamp,
-    ampm,
-    hhmmTz,
-    longDateWithOrdinal,
-    longDate,
-    midnight,
-    bedtime,
-    now,
-    between,
-    isToday,
-    isTodayUTC,
-  },
+  ai,
+  colour,
+  convert,
+  currency,
+  deck,
+  disk,
+  esm,
+  geo,
+  http,
+  id,
+  json,
+  location,
+  logger,
+  math,
+  object,
+  pubsub,
+  random,
+  state,
+  testing,
+  text,
+  time,
 };

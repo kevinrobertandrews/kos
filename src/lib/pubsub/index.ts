@@ -11,6 +11,11 @@ export function publish(topic: string, payload?: any) {
   (channels[topic] || []).forEach((cb) => cb(payload));
 }
 
+export default {
+  subscribe,
+  publish,
+};
+
 /*
 
 Example: 

@@ -3,7 +3,7 @@ import random from "@lib/random";
 /**
  * Create a deck
  */
-export function deck<T>(array: T[]): {
+export function create<T>(array: T[]): {
   cards: T[];
   draw: () => T;
   list: () => T[];
@@ -18,3 +18,7 @@ export function deck<T>(array: T[]): {
     },
   };
 }
+
+export default {
+  create,
+};

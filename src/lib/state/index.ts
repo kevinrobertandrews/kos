@@ -4,10 +4,9 @@ import { createState, withHistory } from "./createState";
 
 export { stack, queue, createState, withHistory };
 
-const module = {
+export default {
   stack,
   queue,
   createState,
   withHistory,
 };
-export default module;

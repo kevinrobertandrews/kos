@@ -1,6 +1,17 @@
-export { get } from "./get";
-export { post } from "./post";
-export { put } from "./put";
-export { del } from "./del";
-export { options } from "./options";
-export { ping } from "./ping";
+import { get } from "./get";
+import { post } from "./post";
+import { put } from "./put";
+import { del } from "./del";
+import { options } from "./options";
+import { ping } from "./ping";
+
+export { get, post, put, del, options, ping };
+
+export default {
+  get,
+  post,
+  put,
+  del,
+  options,
+  ping,
+};

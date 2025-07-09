@@ -1,1 +1,0 @@
-export { runTest } from "./runTest";

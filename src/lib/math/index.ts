@@ -1,1 +1,7 @@
-export { clamp } from "./clamp";
+import { clamp } from "./clamp";
+
+export { clamp };
+
+export default {
+  clamp,
+};

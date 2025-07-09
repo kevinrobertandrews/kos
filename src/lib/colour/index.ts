@@ -4,3 +4,7 @@
 export function hsl(hue: number, saturation: number, light: number) {
   throw Error("not implemented");
 }
+
+export default {
+  hsl,
+};

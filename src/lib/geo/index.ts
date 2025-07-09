@@ -1,1 +1,7 @@
-export { haversineDistance } from "./haversineDistance";
+import { haversineDistance } from "./haversineDistance";
+
+export { haversineDistance };
+
+export default {
+  haversineDistance,
+};
