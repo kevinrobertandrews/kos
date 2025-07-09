@@ -20,7 +20,6 @@ export function show_status(state: LifeState): void {
 }
 
 export function water(state: LifeState): LifeState {
-  console.log("adding hydration to log...");
   return {
     ...state,
     water: { level: 1.0, since: state.water.since },
@@ -28,7 +27,6 @@ export function water(state: LifeState): LifeState {
 }
 
 export function fuel(state: LifeState): LifeState {
-  console.log("adding meal to log...");
   return {
     ...state,
     fuel: { level: 1.0, since: state.fuel.since },

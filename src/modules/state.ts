@@ -40,7 +40,7 @@ export function reduce(logs?: any[]): LifeState {
     },
   };
 
-  const entries = readLogs();
+  const entries = logs ?? readLogs();
 
   for (const log of entries) {
     // reduce water
@@ -60,7 +60,13 @@ export function reduce(logs?: any[]): LifeState {
     // reduce chores
     if (log.command == Commands.Chore.name) {
       if (time.isToday(log.timestamp)) {
-        state.chores.count = state.chores.count + 1;
+        return {
+          ...state,
+          chores: {
+            ...state.chores,
+            count: state.chores.count + 1,
+          },
+        };
       }
     }
   }
