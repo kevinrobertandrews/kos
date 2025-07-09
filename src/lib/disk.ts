@@ -13,6 +13,9 @@ function mkdir(dir: string): void {
  * Appends data to file
  */
 function save(path: string, data: string): void {
+  if (!exists(path)) {
+    mkdir(path);
+  }
   fs.appendFileSync(path, data, "utf-8");
 }
 

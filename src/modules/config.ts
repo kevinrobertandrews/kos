@@ -4,4 +4,6 @@ export default {
   // DAY_CROSSOVER: "2am",
   // STRETCH_DECAY: 1,
   // BEDTIME: "10pm",
+  LOG_PATH: "../data",
+  LOG_FILE: "log.jsonl",
 };
